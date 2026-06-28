@@ -1,23 +1,25 @@
-# Week 1 MLOps Assignment
+git status
 
-Roll Number: 24F2000612
+dvc version
 
-Objective:
-Build an end-to-end IRIS classification pipeline using Vertex AI Workbench and Google Cloud Storage.
+dvc init
 
-Steps Performed:
-- Created Vertex AI Workbench instance
-- Created Google Cloud Storage bucket
-- Uploaded IRIS dataset
-- Trained a Decision Tree classifier
-- Achieved 98.3% accuracy
-- Performed inference on evaluation data
-- Executed the pipeline twice
-- Saved model artifacts
+dvc remote list
 
-Tools Used:
-- Vertex AI Workbench
-- Google Cloud Storage
-- Scikit-learn
-- Pandas
-- Joblib
+dvc add data/iris.csv
+
+dvc add models/model.pkl
+
+dvc push
+
+git log --oneline
+
+git checkout <commit>
+
+dvc checkout
+
+git checkout week_2
+
+dvc checkout
+
+git push
