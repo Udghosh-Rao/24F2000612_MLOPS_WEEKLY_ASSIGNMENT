@@ -1,0 +1,35 @@
+
+F
+(
+__dummy"
+__dummy_idJiris_feature_repo
+‹¹¨ÒğŞµf‹¹¨ÒğŞµf
+r
+T
+iris_id-Unique identifier for each iris flower sample"iris_idJiris_feature_repo
+‹¹¨Ò «Áf‹¹¨Ò «Áf1"$095cf98d-fc6a-4357-a1da-2c10d0ab17c0*•¹¨Ò˜ş«¾2Û
+¡
+iris_featuresiris_feature_repoiris_id"
+sepal_length"
+sepal_width"
+petal_length"
+petal_width2€†°–:event_timestampZdata/iris.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢data/iris.parquet’‹¹¨Ò¸¾èV"‹¹¨Òèö f@b
+iris_id’latest5
+‹¹¨ÒğœËf•¹¨Ò¨¬¾
+•³ø»¨Ÿ¼”Œ¹¨Ò0R—
+”
+,feast.infra.online_stores.sqlite.SqliteTable"d
+A/home/jupyter/iris_feature_repo/feature_repo/data/online_store.dbiris_feature_repo_iris_featuresb¡event_timestampZdata/iris.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢data/iris.parquetªiris_feature_repo’‹¹¨Ò¸¾èV"‹¹¨Òèö fŠ1
+
+iris_feature_repo
+‹¹¨Òó¼W‹¹¨Òó¼W’©
+¦
+iris_featuresiris_feature_repo"feature_view*À
+¡
+iris_featuresiris_feature_repoiris_id"
+sepal_length"
+sepal_width"
+petal_length"
+petal_width2€†°–:event_timestampZdata/iris.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢data/iris.parquet’‹¹¨Ò¸¾èV"‹¹¨Òèö f@b
+iris_id’latest
+‹¹¨ÒğœËf‹¹¨ÒğœËf2‹¹¨ÒĞÕgB$c3b728ab-91ff-462a-aa6f-c1acc1cfc329
