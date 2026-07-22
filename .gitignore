@@ -2,4 +2,4 @@
 __pycache__/
 *.pyc
 data/iris.csv
-/model.joblib
+model.joblib
