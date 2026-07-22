@@ -34,6 +34,7 @@ jobs:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
 
       - name: DVC pull (data only)
+        continue-on-error: true
         run: dvc pull
 
       - name: Run tests
