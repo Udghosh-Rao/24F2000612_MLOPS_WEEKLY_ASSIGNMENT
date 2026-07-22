@@ -3,3 +3,9 @@ __pycache__/
 *.pyc
 data/iris.csv
 model.joblib
+venv/
+mlflow.db
+mlruns/
+mlflow_server.log
+__pycache__/
+*.pyc
