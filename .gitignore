@@ -1,3 +1,6 @@
 key.json
 *.pyc
 __pycache__/
+key.json
+*.pyc
+__pycache__/
