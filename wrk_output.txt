@@ -1,0 +1,10 @@
+nohup: ignoring input
+Running 1m test @ http://35.238.157.204/predict
+  4 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.41s   392.19ms   2.00s    74.13%
+    Req/Sec    57.88     59.01   350.00     84.55%
+  7723 requests in 1.00m, 1.09MB read
+  Socket errors: connect 0, read 0, write 0, timeout 5802
+Requests/sec:    128.56
+Transfer/sec:     18.58KB

@@ -1,0 +1,81 @@
+name: Bottleneck Comparison Test
+
+on:
+  workflow_dispatch:
+
+env:
+  REGION: us-central1
+  CLUSTER_NAME: iris-cluster
+  CLUSTER_REGION: us-central1
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  compare-scaling:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_SA_EMAIL }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Get GKE credentials
+        uses: google-github-actions/get-gke-credentials@v2
+        with:
+          cluster_name: ${{ env.CLUSTER_NAME }}
+          location: ${{ env.CLUSTER_REGION }}
+
+      - name: Install wrk
+        run: sudo apt-get update && sudo apt-get install -y wrk
+
+      - name: Get service IP
+        run: |
+          IP=$(kubectl get service iris-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+          echo "EXTERNAL_IP=$IP" >> $GITHUB_ENV
+
+      - name: SCENARIO A - maxReplicas 3, 1000 connections
+        run: |
+          kubectl patch hpa iris-api-hpa --patch '{"spec":{"maxReplicas":3}}'
+          sleep 20
+          echo "===== SCENARIO A: maxReplicas=3, 1000 connections =====" | tee scenario_a.txt
+          wrk -t4 -c1000 -d30s -s /dev/stdin http://${EXTERNAL_IP}/predict <<'LUA' | tee -a scenario_a.txt
+          wrk.method = "POST"
+          wrk.body = '{"sepal_length":5.1,"sepal_width":3.5,"petal_length":1.4,"petal_width":0.2}'
+          wrk.headers["Content-Type"] = "application/json"
+          LUA
+          kubectl get hpa | tee -a scenario_a.txt
+          kubectl get pods | tee -a scenario_a.txt
+
+      - name: SCENARIO B - maxReplicas 1, 2000 connections
+        run: |
+          kubectl patch hpa iris-api-hpa --patch '{"spec":{"maxReplicas":1}}'
+          kubectl scale deployment iris-api --replicas=1
+          sleep 20
+          echo "===== SCENARIO B: maxReplicas=1, 2000 connections =====" | tee scenario_b.txt
+          wrk -t4 -c2000 -d30s -s /dev/stdin http://${EXTERNAL_IP}/predict <<'LUA' | tee -a scenario_b.txt
+          wrk.method = "POST"
+          wrk.body = '{"sepal_length":5.1,"sepal_width":3.5,"petal_length":1.4,"petal_width":0.2}'
+          wrk.headers["Content-Type"] = "application/json"
+          LUA
+          kubectl get hpa | tee -a scenario_b.txt
+          kubectl get pods | tee -a scenario_b.txt
+
+      - name: Print comparison
+        run: |
+          echo "############ FULL COMPARISON ############"
+          cat scenario_a.txt
+          echo ""
+          cat scenario_b.txt
+
+      - name: Restore maxReplicas to 3
+        if: always()
+        run: kubectl patch hpa iris-api-hpa --patch '{"spec":{"maxReplicas":3}}'
