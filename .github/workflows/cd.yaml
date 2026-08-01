@@ -1,8 +1,8 @@
-name: CD - Build, Push, Deploy
+name: CD - Build, Push, Deploy, Stress Test
 
 on:
   push:
-    branches: [week_6]
+    branches: [week_7]
 
 env:
   REGION: us-central1
@@ -52,9 +52,35 @@ jobs:
         run: |
           sed -i "s|IMAGE_PLACEHOLDER|${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.REPO_NAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}|g" k8s/deployment.yaml
           kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/hpa.yaml
 
       - name: Wait for rollout
         run: kubectl rollout status deployment/iris-api --timeout=180s
 
       - name: Get service external IP
-        run: kubectl get service iris-api-service
+        run: |
+          kubectl get service iris-api-service
+          for i in {1..30}; do
+            IP=$(kubectl get service iris-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+            if [ -n "$IP" ]; then break; fi
+            sleep 5
+          done
+          echo "EXTERNAL_IP=$IP" >> $GITHUB_ENV
+          echo "Service IP: $IP"
+
+      - name: Install wrk
+        run: sudo apt-get update && sudo apt-get install -y wrk
+
+      - name: Run stress test with wrk
+        run: |
+          echo "Running wrk load test against http://${EXTERNAL_IP}/predict"
+          wrk -t4 -c1000 -d30s -s /dev/stdin http://${EXTERNAL_IP}/predict << 'LUA'
+          wrk.method = "POST"
+          wrk.body = '{"sepal_length":5.1,"sepal_width":3.5,"petal_length":1.4,"petal_width":0.2}'
+          wrk.headers["Content-Type"] = "application/json"
+          LUA
+
+      - name: Show HPA and pod status after load
+        run: |
+          kubectl get hpa
+          kubectl get pods
