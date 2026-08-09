@@ -1,21 +1,14 @@
 name: IRIS Pipeline CI
 
-# Task 4: run on every push AND every pull request, on every branch
-# (no "branches: [main]" filter, so week_4, main, etc. all trigger this)
 on:
   push:
   pull_request:
-
-permissions:
-  contents: read
-  pull-requests: write   # needed so CML can comment on the PR
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      # Task 3: checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -25,42 +18,105 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      # Task 3: authenticate to GCS using the service account key
-      # stored as a GitHub secret (see README / setup steps for how to add it)
-      - name: Authenticate to GCP
         run: |
-          echo "$GCP_SA_KEY" > gcp-key.json
-          echo "GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json" >> "$GITHUB_ENV"
-        env:
-          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          python -m pip install --upgrade pip
+          pip install pandas numpy==1.26.4 scikit-learn==1.3.2 joblib pytest mlflow
 
-      # Task 3: pull the versioned data + model from the GCS remote
-      - name: DVC pull
-        run: dvc pull
-
-      # Task 1 + Task 2: run all pytest tests (data validation + model evaluation)
-      - name: Run tests
-        run: pytest tests/ -v --tb=short | tee pytest_report.txt
-
-      - name: Clean up GCP key
-        if: always()
-        run: rm -f gcp-key.json
-
-      # Task 5: publish results as a comment on the pull request via CML
-      - name: Setup CML
-        if: github.event_name == 'pull_request'
-        uses: iterative/setup-cml@v2
-
-      - name: Create CML report
-        if: github.event_name == 'pull_request'
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create clean IRIS dataset
         run: |
-          echo "## CI Test Report" > report.md
-          echo "" >> report.md
-          echo '```' >> report.md
-          cat pytest_report.txt >> report.md
-          echo '```' >> report.md
-          cml comment create report.md
+          python - <<'PY'
+          from sklearn.datasets import load_iris
+          import pandas as pd
+          import os
+
+          iris = load_iris()
+
+          df = pd.DataFrame(
+              iris.data,
+              columns=[
+                  "sepal_length",
+                  "sepal_width",
+                  "petal_length",
+                  "petal_width"
+              ]
+          )
+
+          df["species"] = [
+              iris.target_names[i]
+              for i in iris.target
+          ]
+
+          os.makedirs("data", exist_ok=True)
+          df.to_csv("data/iris.csv", index=False)
+
+          print("Created IRIS dataset:", df.shape)
+          PY
+
+      - name: Validate IRIS dataset
+        run: |
+          python - <<'PY'
+          import pandas as pd
+
+          df = pd.read_csv("data/iris.csv")
+
+          expected = [
+              "sepal_length",
+              "sepal_width",
+              "petal_length",
+              "petal_width",
+              "species"
+          ]
+
+          assert list(df.columns) == expected
+          assert len(df) == 150
+          assert df.isnull().sum().sum() == 0
+          assert df["species"].nunique() == 3
+
+          print("Dataset validation passed")
+          print(df["species"].value_counts())
+          PY
+
+      - name: Run Week 8 MLSecOps experiment
+        run: |
+          python mlsecops_iris.py
+
+      - name: Validate poisoning results
+        run: |
+          python - <<'PY'
+          import pandas as pd
+
+          results = pd.read_csv(
+              "data/mlsecops/mlsecops_results.csv"
+          )
+
+          expected = ["0%", "5%", "10%", "50%"]
+
+          assert results["poisoning"].tolist() == expected
+          assert len(results) == 4
+
+          for metric in [
+              "accuracy",
+              "precision",
+              "recall",
+              "f1_score"
+          ]:
+              assert metric in results.columns
+              assert results[metric].between(0, 1).all()
+
+          assert results.loc[
+              results["poisoning"] == "0%",
+              "accuracy"
+          ].iloc[0] >= 0.85
+
+          print("Week 8 MLSecOps validation passed")
+          print(results.to_string(index=False))
+          PY
+
+      - name: Upload experiment results
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlsecops-results
+          path: |
+            data/mlsecops/mlsecops_results.csv
+            data/mlsecops/*.csv
+            data/mlsecops/*.joblib
