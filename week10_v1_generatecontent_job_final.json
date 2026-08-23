@@ -1,0 +1,148 @@
+{
+  "name": "projects/923576764337/locations/us-central1/tuningJobs/4419973118013997056",
+  "tunedModelDisplayName": "iris-gemini-v1-generatecontent",
+  "baseModel": "gemini-2.5-flash",
+  "supervisedTuningSpec": {
+    "trainingDatasetUri": "gs://24f2000612-mlops-oppe1-dvc-20260802/week_10/training/iris_v1_generatecontent.jsonl",
+    "validationDatasetUri": "gs://24f2000612-mlops-oppe1-dvc-20260802/week_10/validation/iris_v1_generatecontent.jsonl",
+    "hyperParameters": {
+      "epochCount": "3",
+      "learningRateMultiplier": 1,
+      "adapterSize": "ADAPTER_SIZE_SIXTEEN"
+    }
+  },
+  "state": "JOB_STATE_SUCCEEDED",
+  "createTime": "2026-08-23T07:29:19.681099Z",
+  "startTime": "2026-08-23T07:29:19.724571Z",
+  "endTime": "2026-08-23T07:51:23.866645Z",
+  "updateTime": "2026-08-23T07:51:23.866645Z",
+  "experiment": "projects/923576764337/locations/us-central1/metadataStores/default/contexts/tuning-experiment-20260823003257179170",
+  "tunedModel": {
+    "model": "projects/923576764337/locations/us-central1/models/6163159047626293248@1",
+    "endpoint": "projects/923576764337/locations/us-central1/endpoints/4753378432631439360",
+    "checkpoints": [
+      {
+        "checkpointId": "1",
+        "epoch": "1",
+        "step": "1",
+        "endpoint": "projects/923576764337/locations/us-central1/endpoints/6372422498671132672"
+      },
+      {
+        "checkpointId": "2",
+        "epoch": "2",
+        "step": "2",
+        "endpoint": "projects/923576764337/locations/us-central1/endpoints/7671710991167520768"
+      },
+      {
+        "checkpointId": "3",
+        "epoch": "3",
+        "step": "3",
+        "endpoint": "projects/923576764337/locations/us-central1/endpoints/4753378432631439360"
+      }
+    ]
+  },
+  "tuningDataStats": {
+    "supervisedTuningDataStats": {
+      "tuningDatasetExampleCount": "105",
+      "userInputTokenDistribution": {
+        "sum": "3885",
+        "min": 37,
+        "max": 37,
+        "mean": 37,
+        "median": 37,
+        "p5": 37,
+        "p95": 37,
+        "buckets": [
+          {
+            "count": 105,
+            "left": 37,
+            "right": 37
+          }
+        ]
+      },
+      "userOutputTokenDistribution": {
+        "sum": "210",
+        "min": 2,
+        "max": 2,
+        "mean": 2,
+        "median": 2,
+        "p5": 2,
+        "p95": 2,
+        "buckets": [
+          {
+            "count": 105,
+            "left": 2,
+            "right": 2
+          }
+        ]
+      },
+      "userMessagePerExampleDistribution": {
+        "sum": "210",
+        "min": 2,
+        "max": 2,
+        "mean": 2,
+        "median": 2,
+        "p5": 2,
+        "p95": 2,
+        "buckets": [
+          {
+            "count": 105,
+            "left": 2,
+            "right": 2
+          }
+        ]
+      },
+      "userDatasetExamples": [
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "sepal_length: 5.1, sepal_width: 2.5, petal_length: 3.0, petal_width: 1.1"
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "text": "versicolor"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "sepal_length: 6.2, sepal_width: 2.2, petal_length: 4.5, petal_width: 1.5"
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "text": "versicolor"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "sepal_length: 5.1, sepal_width: 3.8, petal_length: 1.5, petal_width: 0.3"
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "text": "setosa"
+            }
+          ]
+        }
+      ],
+      "totalBillableTokenCount": "4095"
+    }
+  }
+}

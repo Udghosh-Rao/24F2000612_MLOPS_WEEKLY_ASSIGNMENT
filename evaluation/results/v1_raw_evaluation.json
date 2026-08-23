@@ -1,0 +1,330 @@
+{
+  "model": "V1 Raw",
+  "endpoint": "4753378432631439360",
+  "test_file": "data/test/iris_v1_raw.jsonl",
+  "test_examples": 23,
+  "metrics": {
+    "accuracy": 0.8695652173913043,
+    "format_compliance": 0.0,
+    "macro_precision": 0.9,
+    "macro_recall": 0.875,
+    "per_class": {
+      "setosa": {
+        "precision": 0.7,
+        "recall": 1.0,
+        "true_positive": 7,
+        "false_positive": 3,
+        "false_negative": 0
+      },
+      "versicolor": {
+        "precision": 1.0,
+        "recall": 0.75,
+        "true_positive": 6,
+        "false_positive": 0,
+        "false_negative": 2
+      },
+      "virginica": {
+        "precision": 1.0,
+        "recall": 0.875,
+        "true_positive": 7,
+        "false_positive": 0,
+        "false_negative": 1
+      }
+    },
+    "confusion_matrix": {
+      "setosa": {
+        "setosa": 7,
+        "versicolor": 0,
+        "virginica": 0
+      },
+      "versicolor": {
+        "setosa": 2,
+        "versicolor": 6,
+        "virginica": 0
+      },
+      "virginica": {
+        "setosa": 1,
+        "versicolor": 0,
+        "virginica": 7
+      }
+    }
+  },
+  "predictions": [
+    {
+      "index": 1,
+      "input": "sepal_length: 5.7, sepal_width: 3.8, petal_length: 1.7, petal_width: 0.3",
+      "expected_output": "setosa",
+      "expected_species": "setosa",
+      "output": "This set of measurements (sepal_length: 5.7, sepal_width: 3.8, petal_length: 1.7, petal_width: 0.3) most closely matches the **Iris setosa** species.\n\nHere's why:\n\n*   **Petal Length and Width:** Iris setosa is known for having very short petals. Your values of 1.7 cm and 0.3 cm are characteristic of setosa",
+      "predicted": "setosa",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 2,
+      "input": "sepal_length: 4.4, sepal_width: 3.0, petal_length: 1.3, petal_width: 0.2",
+      "expected_output": "setosa",
+      "expected_species": "setosa",
+      "output": "This set of measurements (sepal_length: 4.4, sepal_width: 3.0, petal_length: 1.3, petal_width: 0.2) is highly characteristic of an **Iris setosa** flower.\n\nHere's why:\n\n*   **Small Petal Length and Width:** The most defining feature of Iris setosa is its very short petals. 1.3 cm for petal length and 0.2 cm",
+      "predicted": "setosa",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 3,
+      "input": "sepal_length: 6.1, sepal_width: 2.6, petal_length: 5.6, petal_width: 1.4",
+      "expected_output": "virginica",
+      "expected_species": "virginica",
+      "output": "This set of measurements (sepal_length: 6.1, sepal_width: 2.6, petal_length: 5.6, petal_width: 1.4) most closely matches the **Iris virginica** species.\n\nHere's why:\n\n*   **Petal Length and Width:** The relatively long petal length (5.6 cm) and moderate petal width (1.4 cm) are characteristic of Iris virginica. Iris set",
+      "predicted": "virginica",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 4,
+      "input": "sepal_length: 4.9, sepal_width: 2.4, petal_length: 3.3, petal_width: 1.0",
+      "expected_output": "versicolor",
+      "expected_species": "versicolor",
+      "output": "This set of measurements (sepal_length: 4.9, sepal_width: 2.4, petal_length: 3.3, petal_width: 1.0) most closely aligns with the **Iris Versicolor** species.\n\nHere's why:\n\n*   **Petal Length and Width:** The petal length of 3.3 cm and petal width of 1.0 cm are characteristic of Iris Versicolor. Iris Setosa typically",
+      "predicted": "setosa",
+      "correct": false,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 5,
+      "input": "sepal_length: 6.1, sepal_width: 3.0, petal_length: 4.9, petal_width: 1.8",
+      "expected_output": "virginica",
+      "expected_species": "virginica",
+      "output": "This set of measurements (sepal_length: 6.1, sepal_width: 3.0, petal_length: 4.9, petal_width: 1.8) most closely matches the **Iris virginica** species.\n\nHere's why:\n\n*   **Petal Length and Width:** The petal length of 4.9 cm and petal width of 1.8 cm are characteristic of Iris virginica, which generally has longer and",
+      "predicted": "virginica",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 6,
+      "input": "sepal_length: 6.7, sepal_width: 3.1, petal_length: 5.6, petal_width: 2.4",
+      "expected_output": "virginica",
+      "expected_species": "virginica",
+      "output": "This set of measurements (sepal_length: 6.7, sepal_width: 3.1, petal_length: 5.6, petal_width: 2.4) is highly characteristic of an **Iris virginica**.\n\nHere's why:\n\n*   **Petal Length and Width:** The large petal length (5.6 cm) and petal width (2.4 cm) are strong indicators of *Iris virginica*. *Iris set",
+      "predicted": "virginica",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 7,
+      "input": "sepal_length: 6.2, sepal_width: 2.9, petal_length: 4.3, petal_width: 1.3",
+      "expected_output": "versicolor",
+      "expected_species": "versicolor",
+      "output": "This set of measurements (sepal_length: 6.2, sepal_width: 2.9, petal_length: 4.3, petal_width: 1.3) most closely matches the **Iris versicolor** species.",
+      "predicted": "versicolor",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "STOP",
+      "error": null
+    },
+    {
+      "index": 8,
+      "input": "sepal_length: 6.2, sepal_width: 3.4, petal_length: 5.4, petal_width: 2.3",
+      "expected_output": "virginica",
+      "expected_species": "virginica",
+      "output": "This looks like a set of measurements for an **Iris flower**.\n\nSpecifically, these values are very characteristic of an **Iris virginica**.\n\nHere's why:\n\n*   **Petal length (5.4 cm) and petal width (2.3 cm)** are generally larger in *Iris virginica* compared to *Iris setosa* and *Iris versicolor*.\n*   **Sepal length (6.2 cm) and sepal width (3.4 cm",
+      "predicted": "setosa",
+      "correct": false,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 9,
+      "input": "sepal_length: 5.0, sepal_width: 3.4, petal_length: 1.5, petal_width: 0.2",
+      "expected_output": "setosa",
+      "expected_species": "setosa",
+      "output": "This set of measurements (sepal_length: 5.0, sepal_width: 3.4, petal_length: 1.5, petal_width: 0.2) is highly characteristic of the **Iris setosa** species.\n\nIn the Iris dataset, Iris setosa flowers are known for having:\n*   **Shorter petal lengths**\n*   **Shorter petal widths**\n*   Often **wider sepals** relative",
+      "predicted": "setosa",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 10,
+      "input": "sepal_length: 6.4, sepal_width: 3.2, petal_length: 4.5, petal_width: 1.5",
+      "expected_output": "versicolor",
+      "expected_species": "versicolor",
+      "output": "This set of measurements (sepal_length: 6.4, sepal_width: 3.2, petal_length: 4.5, petal_width: 1.5) is most characteristic of an **Iris versicolor**.\n\nHere's why:\n\n*   **Petal Length and Width:** The petal length of 4.5 cm and petal width of 1.5 cm fall squarely within the typical range for Iris versicolor. Iris set",
+      "predicted": "versicolor",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 11,
+      "input": "sepal_length: 6.6, sepal_width: 2.9, petal_length: 4.6, petal_width: 1.3",
+      "expected_output": "versicolor",
+      "expected_species": "versicolor",
+      "output": "The provided measurements (sepal_length: 6.6, sepal_width: 2.9, petal_length: 4.6, petal_width: 1.3) are characteristic of an **Iris versicolor**.",
+      "predicted": "versicolor",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "STOP",
+      "error": null
+    },
+    {
+      "index": 12,
+      "input": "sepal_length: 4.7, sepal_width: 3.2, petal_length: 1.3, petal_width: 0.2",
+      "expected_output": "setosa",
+      "expected_species": "setosa",
+      "output": "This set of measurements (sepal_length: 4.7, sepal_width: 3.2, petal_length: 1.3, petal_width: 0.2) is highly characteristic of an **Iris setosa**.\n\nHere's why:\n\n*   **Small petal length and width:** Iris setosa is known for having the shortest and narrowest petals among the three common Iris species. Your values (1.3 and 0.2",
+      "predicted": "setosa",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 13,
+      "input": "sepal_length: 6.1, sepal_width: 2.9, petal_length: 4.7, petal_width: 1.4",
+      "expected_output": "versicolor",
+      "expected_species": "versicolor",
+      "output": "The provided measurements (sepal_length: 6.1, sepal_width: 2.9, petal_length: 4.7, petal_width: 1.4) are highly characteristic of an **Iris versicolor** flower.\n\nHere's why:\n\n*   **Petal Length and Width:** The petal length of 4.7 cm and petal width of 1.4 cm fall squarely within the typical range for Iris versicolor. Iris",
+      "predicted": "versicolor",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 14,
+      "input": "sepal_length: 6.4, sepal_width: 2.8, petal_length: 5.6, petal_width: 2.2",
+      "expected_output": "virginica",
+      "expected_species": "virginica",
+      "output": "This set of measurements (sepal_length: 6.4, sepal_width: 2.8, petal_length: 5.6, petal_width: 2.2) most closely matches the **Iris virginica** species.",
+      "predicted": "virginica",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "STOP",
+      "error": null
+    },
+    {
+      "index": 15,
+      "input": "sepal_length: 6.3, sepal_width: 3.3, petal_length: 4.7, petal_width: 1.6",
+      "expected_output": "versicolor",
+      "expected_species": "versicolor",
+      "output": "This set of measurements (sepal_length: 6.3, sepal_width: 3.3, petal_length: 4.7, petal_width: 1.6) most closely matches the **Iris Versicolor** species.",
+      "predicted": "versicolor",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "STOP",
+      "error": null
+    },
+    {
+      "index": 16,
+      "input": "sepal_length: 6.0, sepal_width: 3.0, petal_length: 4.8, petal_width: 1.8",
+      "expected_output": "virginica",
+      "expected_species": "virginica",
+      "output": "This set of measurements (sepal_length: 6.0, sepal_width: 3.0, petal_length: 4.8, petal_width: 1.8) is highly characteristic of an **Iris virginica**.\n\nHere's why:\n\n*   **Petal Length and Width:** The relatively long petal length (4.8 cm) and significant petal width (1.8 cm) are strong indicators of *Iris virginica*. *",
+      "predicted": "virginica",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 17,
+      "input": "sepal_length: 5.0, sepal_width: 3.3, petal_length: 1.4, petal_width: 0.2",
+      "expected_output": "setosa",
+      "expected_species": "setosa",
+      "output": "This set of measurements (sepal_length: 5.0, sepal_width: 3.3, petal_length: 1.4, petal_width: 0.2) is highly characteristic of an **Iris setosa**.\n\nHere's why:\n\n*   **Small petal length and width:** The petal length of 1.4 and petal width of 0.2 are very small, which is a defining feature of Iris setosa.",
+      "predicted": "setosa",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 18,
+      "input": "sepal_length: 6.0, sepal_width: 3.4, petal_length: 4.5, petal_width: 1.6",
+      "expected_output": "versicolor",
+      "expected_species": "versicolor",
+      "output": "This set of measurements (sepal_length: 6.0, sepal_width: 3.4, petal_length: 4.5, petal_width: 1.6) most closely corresponds to an **Iris Versicolor**.\n\nHere's why:\n\n*   **Petal Length and Width:** The petal length of 4.5 cm and petal width of 1.6 cm are characteristic of Iris Versicolor. Iris Setosa typically has much",
+      "predicted": "setosa",
+      "correct": false,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 19,
+      "input": "sepal_length: 6.5, sepal_width: 3.0, petal_length: 5.5, petal_width: 1.8",
+      "expected_output": "virginica",
+      "expected_species": "virginica",
+      "output": "This set of measurements (sepal_length: 6.5, sepal_width: 3.0, petal_length: 5.5, petal_width: 1.8) most closely matches the **Iris virginica** species.",
+      "predicted": "virginica",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "STOP",
+      "error": null
+    },
+    {
+      "index": 20,
+      "input": "sepal_length: 5.4, sepal_width: 3.7, petal_length: 1.5, petal_width: 0.2",
+      "expected_output": "setosa",
+      "expected_species": "setosa",
+      "output": "This set of measurements (sepal_length: 5.4, sepal_width: 3.7, petal_length: 1.5, petal_width: 0.2) is highly characteristic of the **Iris setosa** species.\n\nHere's why:\n\n*   **Small petal length and width:** Iris setosa is known for having the smallest petals among the three common Iris species. Your values (1.5 and 0.2)",
+      "predicted": "setosa",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    },
+    {
+      "index": 21,
+      "input": "sepal_length: 5.7, sepal_width: 2.8, petal_length: 4.5, petal_width: 1.3",
+      "expected_output": "versicolor",
+      "expected_species": "versicolor",
+      "output": "This set of measurements (sepal_length: 5.7, sepal_width: 2.8, petal_length: 4.5, petal_width: 1.3) most closely corresponds to the **Iris versicolor** species.",
+      "predicted": "versicolor",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "STOP",
+      "error": null
+    },
+    {
+      "index": 22,
+      "input": "sepal_length: 6.5, sepal_width: 3.0, petal_length: 5.2, petal_width: 2.0",
+      "expected_output": "virginica",
+      "expected_species": "virginica",
+      "output": "The provided measurements (sepal length: 6.5 cm, sepal width: 3.0 cm, petal length: 5.2 cm, petal width: 2.0 cm) are highly characteristic of an **Iris virginica** flower.",
+      "predicted": "virginica",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "STOP",
+      "error": null
+    },
+    {
+      "index": 23,
+      "input": "sepal_length: 5.0, sepal_width: 3.5, petal_length: 1.3, petal_width: 0.3",
+      "expected_output": "setosa",
+      "expected_species": "setosa",
+      "output": "This set of measurements (sepal_length: 5.0, sepal_width: 3.5, petal_length: 1.3, petal_width: 0.3) is highly characteristic of an **Iris setosa**.\n\nHere's why:\n\n*   **Short petal length and width:** The petal length of 1.3 and petal width of 0.3 are very small, which is a defining feature of Iris setosa.",
+      "predicted": "setosa",
+      "correct": true,
+      "format_compliant": false,
+      "finish_reason": "MAX_TOKENS",
+      "error": null
+    }
+  ]
+}

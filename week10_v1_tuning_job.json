@@ -1,0 +1,23 @@
+{
+  "name": "projects/923576764337/locations/us-central1/tuningJobs/8025104619724079104",
+  "tunedModelDisplayName": "iris-gemini-v1-raw",
+  "baseModel": "gemini-2.5-flash",
+  "supervisedTuningSpec": {
+    "trainingDatasetUri": "gs://24f2000612-mlops-oppe1-dvc-20260802/week_10/training/iris_v1_raw.jsonl",
+    "validationDatasetUri": "gs://24f2000612-mlops-oppe1-dvc-20260802/week_10/validation/iris_v1_raw.jsonl",
+    "hyperParameters": {
+      "epochCount": "3",
+      "learningRateMultiplier": 1,
+      "adapterSize": "ADAPTER_SIZE_SIXTEEN"
+    }
+  },
+  "state": "JOB_STATE_FAILED",
+  "createTime": "2026-08-23T07:24:41.277185Z",
+  "startTime": "2026-08-23T07:25:50.074272Z",
+  "endTime": "2026-08-23T07:25:55.777840Z",
+  "updateTime": "2026-08-23T07:25:55.777840Z",
+  "error": {
+    "code": 3,
+    "message": "Converting from 'VertexTextBison' to 'GenerateContent' dataset format is currently not supported for this model."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "project_id": "project-83abca74-808e-4448-be0",
+  "location": "us-central1",
+  "job_name": "projects/923576764337/locations/us-central1/tuningJobs/4419973118013997056",
+  "state": "JOB_STATE_SUCCEEDED",
+  "base_model": "gemini-2.5-flash",
+  "training_dataset": "gs://24f2000612-mlops-oppe1-dvc-20260802/week_10/training/iris_v1_generatecontent.jsonl",
+  "validation_dataset": "gs://24f2000612-mlops-oppe1-dvc-20260802/week_10/validation/iris_v1_generatecontent.jsonl",
+  "hyper_parameters": {
+    "epochCount": "3",
+    "learningRateMultiplier": 1,
+    "adapterSize": "ADAPTER_SIZE_SIXTEEN"
+  },
+  "tuned_model": {
+    "model": "projects/923576764337/locations/us-central1/models/6163159047626293248@1",
+    "endpoint": "projects/923576764337/locations/us-central1/endpoints/4753378432631439360",
+    "checkpoints": [
+      {
+        "checkpointId": "1",
+        "epoch": "1",
+        "step": "1",
+        "endpoint": "projects/923576764337/locations/us-central1/endpoints/6372422498671132672"
+      },
+      {
+        "checkpointId": "2",
+        "epoch": "2",
+        "step": "2",
+        "endpoint": "projects/923576764337/locations/us-central1/endpoints/7671710991167520768"
+      },
+      {
+        "checkpointId": "3",
+        "epoch": "3",
+        "step": "3",
+        "endpoint": "projects/923576764337/locations/us-central1/endpoints/4753378432631439360"
+      }
+    ]
+  }
+}

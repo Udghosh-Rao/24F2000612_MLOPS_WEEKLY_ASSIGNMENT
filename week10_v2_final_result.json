@@ -1,0 +1,148 @@
+{
+  "name": "projects/923576764337/locations/us-central1/tuningJobs/748694996776910848",
+  "tunedModelDisplayName": "iris-gemini-v2-description",
+  "baseModel": "gemini-2.5-flash",
+  "supervisedTuningSpec": {
+    "trainingDatasetUri": "gs://24f2000612-mlops-oppe1-dvc-20260802/week_10/training/iris_v2_generatecontent.jsonl",
+    "validationDatasetUri": "gs://24f2000612-mlops-oppe1-dvc-20260802/week_10/validation/iris_v2_generatecontent.jsonl",
+    "hyperParameters": {
+      "epochCount": "3",
+      "learningRateMultiplier": 1,
+      "adapterSize": "ADAPTER_SIZE_SIXTEEN"
+    }
+  },
+  "state": "JOB_STATE_SUCCEEDED",
+  "createTime": "2026-08-23T07:58:29.492555Z",
+  "startTime": "2026-08-23T07:58:29.536542Z",
+  "endTime": "2026-08-23T08:18:19.251283Z",
+  "updateTime": "2026-08-23T08:18:19.251283Z",
+  "experiment": "projects/923576764337/locations/us-central1/metadataStores/default/contexts/tuning-experiment-20260823005915942308",
+  "tunedModel": {
+    "model": "projects/923576764337/locations/us-central1/models/7470328839470579712@1",
+    "endpoint": "projects/923576764337/locations/us-central1/endpoints/6035074739083411456",
+    "checkpoints": [
+      {
+        "checkpointId": "1",
+        "epoch": "1",
+        "step": "1",
+        "endpoint": "projects/923576764337/locations/us-central1/endpoints/499728584580005888"
+      },
+      {
+        "checkpointId": "2",
+        "epoch": "2",
+        "step": "2",
+        "endpoint": "projects/923576764337/locations/us-central1/endpoints/5809894757714886656"
+      },
+      {
+        "checkpointId": "3",
+        "epoch": "3",
+        "step": "3",
+        "endpoint": "projects/923576764337/locations/us-central1/endpoints/6035074739083411456"
+      }
+    ]
+  },
+  "tuningDataStats": {
+    "supervisedTuningDataStats": {
+      "tuningDatasetExampleCount": "105",
+      "userInputTokenDistribution": {
+        "sum": "5145",
+        "min": 49,
+        "max": 49,
+        "mean": 49,
+        "median": 49,
+        "p5": 49,
+        "p95": 49,
+        "buckets": [
+          {
+            "count": 105,
+            "left": 49,
+            "right": 49
+          }
+        ]
+      },
+      "userOutputTokenDistribution": {
+        "sum": "630",
+        "min": 6,
+        "max": 6,
+        "mean": 6,
+        "median": 6,
+        "p5": 6,
+        "p95": 6,
+        "buckets": [
+          {
+            "count": 105,
+            "left": 6,
+            "right": 6
+          }
+        ]
+      },
+      "userMessagePerExampleDistribution": {
+        "sum": "210",
+        "min": 2,
+        "max": 2,
+        "mean": 2,
+        "median": 2,
+        "p5": 2,
+        "p95": 2,
+        "buckets": [
+          {
+            "count": 105,
+            "left": 2,
+            "right": 2
+          }
+        ]
+      },
+      "userDatasetExamples": [
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "A flower specimen has a sepal length of 5.1 cm, sepal width of 2.5 cm, petal length of 3.0 cm, and petal width of 1.1 cm. Identify the iris species."
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "text": "This is Iris versicolor."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "A flower specimen has a sepal length of 6.2 cm, sepal width of 2.2 cm, petal length of 4.5 cm, and petal width of 1.5 cm. Identify the iris species."
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "text": "This is Iris versicolor."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "parts": [
+            {
+              "text": "A flower specimen has a sepal length of 5.1 cm, sepal width of 3.8 cm, petal length of 1.5 cm, and petal width of 0.3 cm. Identify the iris species."
+            }
+          ]
+        },
+        {
+          "role": "model",
+          "parts": [
+            {
+              "text": "This is Iris setosa."
+            }
+          ]
+        }
+      ],
+      "totalBillableTokenCount": "5775"
+    }
+  }
+}

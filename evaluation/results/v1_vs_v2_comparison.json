@@ -1,0 +1,19 @@
+{
+  "v1": {
+    "endpoint": "4753378432631439360",
+    "accuracy": 0.8695652173913043,
+    "format_compliance": 0.0,
+    "macro_precision": 0.9,
+    "macro_recall": 0.875
+  },
+  "v2": {
+    "endpoint": "6035074739083411456",
+    "accuracy": 0.34782608695652173,
+    "format_compliance": 0.0,
+    "macro_precision": 0.4393939393939394,
+    "macro_recall": 0.375
+  },
+  "winner_by_accuracy": "V1 Raw",
+  "accuracy_difference_v2_minus_v1": -0.5217391304347826,
+  "format_compliance_difference_v2_minus_v1": 0.0
+}

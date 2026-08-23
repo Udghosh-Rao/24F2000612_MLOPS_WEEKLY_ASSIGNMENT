@@ -1,0 +1,49 @@
+{
+  "assignment": "From MLOps to LLMOps: Fine-Tuning Gemini on the IRIS Pipeline",
+  "week": 10,
+  "project_id": "project-83abca74-808e-4448-be0",
+  "location": "us-central1",
+  "base_model": "gemini-2.5-flash",
+
+  "fine_tuning": {
+    "epochs": 3,
+    "learning_rate_multiplier": 1.0,
+    "adapter_size": 16,
+
+    "v1": {
+      "representation": "Raw features",
+      "job_id": "4419973118013997056",
+      "status": "JOB_STATE_SUCCEEDED",
+      "endpoint": "4753378432631439360"
+    },
+
+    "v2": {
+      "representation": "Natural language description",
+      "job_id": "748694996776910848",
+      "status": "JOB_STATE_SUCCEEDED",
+      "endpoint": "6035074739083411456"
+    }
+  },
+
+  "evaluation": {
+    "test_examples": 23,
+
+    "v1_raw": {
+      "accuracy": 86.96,
+      "macro_precision": 90.00,
+      "macro_recall": 87.50,
+      "format_compliance": 0.00
+    },
+
+    "v2_description": {
+      "accuracy": 34.78,
+      "macro_precision": 43.94,
+      "macro_recall": 37.50,
+      "format_compliance": 0.00
+    },
+
+    "winner": "V1 Raw"
+  },
+
+  "conclusion": "V1 Raw performed better than V2 Description on the held-out IRIS test set."
+}

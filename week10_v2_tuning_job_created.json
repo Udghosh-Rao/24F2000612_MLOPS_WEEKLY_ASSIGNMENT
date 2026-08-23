@@ -1,0 +1,17 @@
+{
+  "name": "projects/923576764337/locations/us-central1/tuningJobs/748694996776910848",
+  "tunedModelDisplayName": "iris-gemini-v2-description",
+  "baseModel": "gemini-2.5-flash",
+  "supervisedTuningSpec": {
+    "trainingDatasetUri": "gs://24f2000612-mlops-oppe1-dvc-20260802/week_10/training/iris_v2_generatecontent.jsonl",
+    "validationDatasetUri": "gs://24f2000612-mlops-oppe1-dvc-20260802/week_10/validation/iris_v2_generatecontent.jsonl",
+    "hyperParameters": {
+      "epochCount": "3",
+      "learningRateMultiplier": 1,
+      "adapterSize": "ADAPTER_SIZE_SIXTEEN"
+    }
+  },
+  "state": "JOB_STATE_PENDING",
+  "createTime": "2026-08-23T07:58:29.492555Z",
+  "updateTime": "2026-08-23T07:58:29.492555Z"
+}
